@@ -159,8 +159,8 @@ def new_pass(request,token):
                 else:
                     messages.error(request,"Passwords doesn't match")
                     return redirect("/new_pass/")
-        except Exception as e:
-            print(e)
+        except Exception:
+
             return HttpResponse("<h2>This is not a Valid link<h2>")
     return render(request,"new_pass.html",{"form":form})
 
