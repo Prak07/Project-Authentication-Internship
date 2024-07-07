@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="{% static '/css/profile.css' %}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Profile</h2>
+        <div class="profile-info">
+            <p><strong>Username:</strong> <span id="username">{{username}}</span></p>
+            <p><strong>Email:</strong> <span id="email">{{email}}</span></p>
+            <p><strong>Date Joined:</strong> <span id="date-joined">{{date_joined}}</span></p>
+            <p><strong>Last Updated:</strong> <span id="last-updated">{{last_updated}}</span></p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/dashboard/">Back to Dashboard</a></li>
+                <li><a href="/logout/" id="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
