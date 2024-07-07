@@ -11,7 +11,7 @@ def login(request):
     form=LoginForm()
     if request.method=="POST":
         form=LoginForm(request.POST)
-        if form.is_valid(): 
+        if form.is_valid():
             username=form.cleaned_data["username"]
             password=form.cleaned_data["password"]
             try:
@@ -138,7 +138,8 @@ def profile(request):
         date_joined=request.user.date_joined
         last_updated=request.user.last_updated
         return render(request,"profile.html",{"username":username,"email":email,"date_joined":date_joined,"last_updated":last_updated})
-    return render(request,"profile.html")
+    else:
+        return redirect("/login/")
 
 def new_pass(request,token):
     form=NewPassForm()
