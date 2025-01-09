@@ -29,7 +29,7 @@ This Django-based Authentication System provides a secure and user-friendly inte
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/authentication-system.git
+   git clone https://github.com/Prak07/Project-Authentication-Internship.git
    ```
 
 2. **Navigate to the Project Directory**:
