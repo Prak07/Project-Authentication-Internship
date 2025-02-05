@@ -15,20 +15,33 @@ def login(request):
             username=form.cleaned_data["username"]
             password=form.cleaned_data["password"]
             try:
-                user = Profile.objects.get(username=username)
+                user=Profile.objects.get(username=username)
                 if user is not None:
                     if user.check_password(password):
-                        auth.login(request, user)
-                        return redirect("/dashboard/")
+                            auth.login(request, user)
+                            return redirect("/dashboard/")
                     else:
-                        messages.error(request, "Invalid password")
-                        return redirect("/login/")
+                            messages.error(request, "Invalid password")
+                            return redirect("/login/")
                 else:
-                    messages.error(request, "Invalid email")
+                        messages.error(request, "Invalid email")
+                        return redirect("/login/")
+            except:
+                try:
+                    user=Profile.objects.get(email=username)
+                    if user is not None:
+                        if user.check_password(password):
+                            auth.login(request, user)
+                            return redirect("/dashboard/")
+                        else:
+                            messages.error(request, "Invalid password")
+                            return redirect("/login/")
+                    else:
+                        messages.error(request, "Invalid email")
+                        return redirect("/login/")
+                except:
+                    messages.error(request, "Invalid credentials")
                     return redirect("/login/")
-            except Exception:
-                messages.error(request, "Invalid credentials")
-                return redirect("/login/")
         else:
             messages.error(request,"Wrong input")
             return redirect("/login/")
